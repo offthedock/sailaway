@@ -1,0 +1,16 @@
+lobe/dat/
+
+lobe/hdt/
+lobe/jar/
+
+lobe/iso/
+lobe/usb/
+
+ipxe
+skin
+tool
+
+lobe/eye/ant5/
+lobe/eye/tfjs/
+lobe/nlp/core/
+lobe/nlp/nltk/
