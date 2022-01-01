@@ -1,7 +1,8 @@
 #!/bin/bash
 
-export SOURCE=/git/fossil
 export NEUROX=/git/neurox
+
+export SOURCE=/git/fossil
 export TARGET=/git/coding
 
 export MAPPER="python nodejs php"
