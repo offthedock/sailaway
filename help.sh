@@ -26,54 +26,57 @@ ensure_link () {
 
 ################################################################################
 
-export TARGET=/git/neurox/help
+export TARGET=/media/$USER/OffTheDock
 
 mainloop () {
     case $1 in
         jquery-ui)
-            ensure_repo "github.com:jquery/jqueryui.com" $TARGET/main/$1
+            ensure_repo "github.com:jquery/jqueryui.com" $TARGET/rtfd/git/$1
             ;;
         bootstrap)
-            ensure_repo "github.com:twbs/bootstrap" $TARGET/main/$1
+            ensure_repo "github.com:twbs/bootstrap" $TARGET/rtfd/git/$1
             ;;
         vuejs)
-            ensure_repo "github.com:vuejs/vuejs.org" $TARGET/main/$1
+            ensure_repo "github.com:vuejs/vuejs.org" $TARGET/rtfd/git/$1
             ;;
         #***********************************************************************
         react-native-website)
-            ensure_repo "github.com:facebook/react-native-website" $TARGET/main/$1
+            ensure_repo "github.com:facebook/react-native-website" $TARGET/rtfd/git/$1
             ;;
         react-native-navigation)
-            ensure_repo "github.com:react-navigation/react-navigation.github.io" $TARGET/main/$1
+            ensure_repo "github.com:react-navigation/react-navigation.github.io" $TARGET/rtfd/git/$1
             ;;
         react-native-reanimated)
-            ensure_repo "github.com:software-mansion/react-native-reanimated" $TARGET/main/$1
+            ensure_repo "github.com:software-mansion/react-native-reanimated" $TARGET/rtfd/git/$1
             ;;
         #***********************************************************************
         android-sdk)
             ;;
         expo-sdk)
-            ensure_repo "github.com:rauldeheer/expo-docs" $TARGET/main/$1
+            ensure_repo "github.com:rauldeheer/expo-docs" $TARGET/rtfd/git/$1
             ;;
         parse-sdk)
+            ;;
+        #***********************************************************************
+        flutter)
+            ;;
+        react-native)
             ;;
         #***********************************************************************
         nodejs)
             ;;
         python)
-            mainloop "rtd" numpy scipy-cookbook
-            mainloop "rtd" nltk{-trainer,} owlready2 rdflib sparqlwrapper
-            mainloop "rtd" django-{csp,hosts,environ,storages,money} whitenoise
-            mainloop "rtd" django-rest-{framework-{json-api,features,datatables},auth,swagger} python-social-auth
-            mainloop "rtd" django-{oauth-toolkit,debug-toolbar,import-export,business-logic,datatable-view} channels
-            mainloop "rtd" django-{model-utils,reversion,mptt,haystack}
-            mainloop "rtd" django-{cms,shop,oscar}
+            mainloop "rtd" $(cat $TARGET/rtfd/lst/python.txt)
+            ;;
+        django)
+            mainloop "rtd" $(cat $TARGET/rtfd/lst/django.txt)
             ;;
         #***********************************************************************
         web)
             for key in jquery-ui bootstrap vuejs ; do
                 mainloop $key
             done
+            mainloop "rtd" rete=latest
             ;;
         mob)
             for key in $(echo react-native-{website,navigation,reanimated} flutter {android,expo,parse}-sdk) ; do
@@ -92,19 +95,9 @@ mainloop () {
             ;;
         #***********************************************************************
         rtd)
-            for x in $* ; do
-                if [[ "x$1" != "x$x" ]] ; then
-                    wget -c https://${x}.readthedocs.io/_/downloads/en/stable/htmlzip/ -O $TARGET/rtfd/zip/$x.zip
-
-                    cd $TARGET/rtfd/web
-
-                    unzip -qo $TARGET/rtfd/zip/${x}.zip
-
-                    #wget -c https://${x}.readthedocs.io/_/downloads/en/stable/epub/ -O $TARGET/rtfd/doc/$x.epub
-                    wget -c https://${x}.readthedocs.io/_/downloads/en/stable/pdf/  -O $TARGET/rtfd/pdf/$x.pdf
-                fi
-            done
+            python tool.py $*
             ;;
+        #***********************************************************************
         all|main|every)
             mainloop web
             mainloop mob

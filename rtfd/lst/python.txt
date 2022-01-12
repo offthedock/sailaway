@@ -1,0 +1,11 @@
+pallets-click=latest
+
+numpy=latest
+scipy-cookbook
+
+nltk
+nltk-trainer=latest
+
+owlready2=latest
+rdflib
+sparqlwrapper

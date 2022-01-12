@@ -5,15 +5,26 @@ help/rtfd/*
 
 lobe/dat/
 
-lobe/hdt/
-lobe/jar/
+disk/iso/
+disk/usb/
 
-lobe/iso/
-lobe/usb/
+prog/hdt/
+prog/jar/
+prog/zip/
 
 ipxe
 skin
 tool
+
+prog/arm/
+prog/dmg/
+prog/elf/
+prog/win/
+
+rtfd/doc/*
+rtfd/pdf/*
+rtfd/web/*
+rtfd/zip/*
 
 lobe/eye/ant5/
 lobe/eye/tfjs/
