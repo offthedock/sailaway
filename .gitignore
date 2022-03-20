@@ -1,32 +1,37 @@
-help/ipfs/*
-help/main/*
-help/page/*
-help/rtfd/*
+/lobe/dat/
 
-lobe/dat/
+/disk/iso/
+/disk/usb/
 
-disk/iso/
-disk/usb/
+/prog/hdt/
+/prog/jar/
+/prog/zip/
+/prog/tgz/
 
-prog/hdt/
-prog/jar/
-prog/zip/
+/arch
+/ipxe
+/skin
+/tool
 
-ipxe
-skin
-tool
+/prog/arm/
+/prog/bin/
+/prog/dmg/
+/prog/elf/
+/prog/pos/
+/prog/win/
 
-prog/arm/
-prog/dmg/
-prog/elf/
-prog/win/
+/xana/doc/*
+/xana/pdf/*
+/xana/web/*
+/xana/zip/*
 
-rtfd/doc/*
-rtfd/pdf/*
-rtfd/web/*
-rtfd/zip/*
+/lobe/eye/ant5/
+/lobe/eye/tfjs/
+/lobe/nlp/core/
+/lobe/nlp/nltk/
 
-lobe/eye/ant5/
-lobe/eye/tfjs/
-lobe/nlp/core/
-lobe/nlp/nltk/
+/arch
+
+/help/ipfs/*
+/help/main/*
+/help/page/*
