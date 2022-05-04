@@ -162,8 +162,6 @@ mainloop () {
 
             python3 -m nltk.download --all
             ;;
-        open)
-            ;;
         soul)
             ;;
         text)

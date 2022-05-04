@@ -11,10 +11,16 @@
 /ipxe
 /virt
 
+*.jar
+*.war
+*.tgz
+*.tar.gz
+*.zip
+
 /lobe/eye/ant5/
 /lobe/eye/tfjs/
-/lobe/jar/
 /lobe/hdt/
+/lobe/jar/corenlp/
 /lobe/zip/
 /lobe/nlp/core/
 /lobe/nlp/nltk/
