@@ -34,17 +34,66 @@ ensure_open () {
 
 mainloop () {
     case $1 in
-        #***********************************************************************
-        image)
-            mainloop iso
-            mainloop jar
-            mainloop pxe
-            mainloop vhd
+        pxe)
+            ensure_fold $NEUROX/ipxe
+
+            wget -c netboot.xyz.iso
+            wget -c rancheros.ipxe
             ;;
+        #***********************************************************************
+        box)
+            ensure_fold $NEUROX/virt/box
+
+            wget -c IE11.Win7.Vagrant.zip
+            wget -c MSEdge.Win10.Vagrant.zip
+            ;;
+        esx)
+            ensure_fold $NEUROX/virt/esx
+
+            wget -c rancheros-aliyun.vhd
+            wget -c rancheros-vmware.vmdk
+            ;;
+        kvm)
+            ensure_fold $NEUROX/virt/kvm
+
+            wget -c rancheros-cloudstack.img
+            wget -c rancheros-digitalocean.img
+            ;;
+        #***********************************************************************
         iso)
-            ensure_fold $NEUROX/lobe/iso
+            ensure_fold $NEUROX/disk/iso
+
+            wget -c FD13-LegacyCD.zip
+            wget -c FD13-BonusCD.zip
+            wget -c FD13-LiveCD.zip
+            ;;
+        mmc)
+            ensure_fold $NEUROX/disk/mmc
 
             wget -c
+            ;;
+        rom)
+            ensure_fold $NEUROX/disk/rom
+
+            wget -c
+            ;;
+        usb)
+            ensure_fold $NEUROX/disk/usb
+
+            wget -c memtest86-usb.zip
+
+            wget -c tails-amd64-4.29.img
+            ;;
+        #***********************************************************************
+        cn5)
+            ;;
+        hdt)
+            ensure_fold $NEUROX/lobe/hdt
+
+            wget -c swdf-2012-11-28.hdt
+            wget -c wordnet-2013-03-20.hdt
+            wget -c wordnet31.hdt
+            wget -c dblp-20170124.hdt{.index.v1-1,}
             ;;
         jar)
             ensure_fold $NEUROX/lobe/jar
@@ -60,42 +109,12 @@ mainloop () {
 
             wget -c expire-3.5.14.55.4.jar
             ;;
-        pxe)
-            ensure_fold $NEUROX/ipxe
-
-            wget -c netboot.xyz.iso
-            wget -c rancheros.ipxe
-            ;;
-        usb)
-            ensure_fold $NEUROX/lobe/usb
-
-            wget -c memtest86-usb.zip
-            wget -c FD13-LegacyCD.zip
-            wget -c FD13-BonusCD.zip
-            wget -c FD13-LiveCD.zip
-            ;;
-        vhd)
-            ensure_fold $NEUROX/lobe/vhd/vbox
-
-            wget -c IE11.Win7.Vagrant.zip
-            wget -c MSEdge.Win10.Vagrant.zip
+        vcr)
             ;;
         #***********************************************************************
-        brain)
-            mainloop hdt
-            mainloop eye
-            mainloop nlp
+        ant5)
             ;;
-        hdt)
-            ensure_fold $NEUROX/lobe/hdt
-
-            wget -c swdf-2012-11-28.hdt
-            wget -c wordnet-2013-03-20.hdt
-            wget -c wordnet31.hdt
-            wget -c dblp-20170124.hdt{.index.v1-1,}
-            ;;
-        eye)
-            mainloop tfjs
+        open)
             ;;
         tfjs)
             ensure_fold $NEUROX/lobe/eye/tfjs/ssd_lite/mobilenet_v2
@@ -117,9 +136,12 @@ mainloop () {
             wget -c https://storage.googleapis.com/tfhub-tfjs-modules/mediapipe/tfjs-model/handskeleton/1/default/1/model.json
             wget -c https://storage.googleapis.com/tfhub-tfjs-modules/mediapipe/tfjs-model/handskeleton/1/default/1/group1-shard{1,2}of2.bin
             ;;
-        nlp)
-            mainloop core
-            mainloop nltk
+        vino)
+            ;;
+        #***********************************************************************
+        atom)
+            ;;
+        glov)
             ;;
         core|corenlp|stanford)
             export STANFORD_VERSION=4.3.0
@@ -140,10 +162,55 @@ mainloop () {
 
             python3 -m nltk.download --all
             ;;
+        open)
+            ;;
+        soul)
+            ;;
+        text)
+            ;;
+        #***********************************************************************
+        eye)
+            mainloop ant5
+            mainloop open
+            mainloop tfjs
+            mainloop vino
+            ;;
+        nlp)
+            mainloop atom
+            mainloop core
+            mainloop glov
+            mainloop open
+            mainloop nltk
+            mainloop soul
+            mainloop text
+            ;;
+        #***********************************************************************
+        off|docs|jade)
+            ensure_repo "github.com:offthedock/offthedock" $TARGET/jade
+
+            #ensure_repo "github.com:freeCodeCamp/devdocs" $TARGET/jade
+
+            sudo -H -- gem install bundler -v 2.1.4
+
+            bundle install
+            bundle exec thor docs:download --default
+            bundle exec rackup
+            ;;
         #***********************************************************************
         all|main|every)
-            mainloop brain
-            mainloop coder
+            mainloop cn5
+            mainloop hdt
+            mainloop jar
+            mainloop eye
+            mainloop nlp
+            mainloop vcr
+
+            mainloop iso
+
+            mainloop pxe
+
+            mainloop box
+            mainloop esx
             ;;
         *)
             echo Unknown directive : $*

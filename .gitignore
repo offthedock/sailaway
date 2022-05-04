@@ -1,21 +1,11 @@
 /.Trash-*/
 
 /arch
-/help
-/skin
-/jade
-/know
+/data
+/zone
 
-/node
-/edge
-/mobi
-/repo
-
+/boot
 /ipxe
-/disk/iso/
-/disk/mmc/
-/disk/rom/
-/disk/usb/
 /virt
 
 /lobe/eye/ant5/
@@ -26,10 +16,17 @@
 /lobe/nlp/core/
 /lobe/nlp/nltk/
 
-/know/doc/*
-/know/pdf/*
-/know/web/*
-/know/zip/*
+/skin
+/help
+/jade
+/know
+/temp
+
+/node
+/edge
+/repo
+/mobi
+/unit
 
 /prog/arm/
 /prog/dmg/
