@@ -1,37 +1,40 @@
-/lobe/dat/
-
-/disk/iso/
-/disk/usb/
-
-/prog/hdt/
-/prog/jar/
-/prog/zip/
-/prog/tgz/
+/.Trash-*/
 
 /arch
-/ipxe
+/help
 /skin
-/tool
+/jade
+/know
 
-/prog/arm/
-/prog/bin/
-/prog/dmg/
-/prog/elf/
-/prog/pos/
-/prog/win/
+/node
+/edge
+/mobi
+/repo
 
-/xana/doc/*
-/xana/pdf/*
-/xana/web/*
-/xana/zip/*
+/ipxe
+/disk/iso/
+/disk/mmc/
+/disk/rom/
+/disk/usb/
+/virt
 
 /lobe/eye/ant5/
 /lobe/eye/tfjs/
+/lobe/jar/
+/lobe/hdt/
+/lobe/zip/
 /lobe/nlp/core/
 /lobe/nlp/nltk/
 
-/arch
+/know/doc/*
+/know/pdf/*
+/know/web/*
+/know/zip/*
 
-/help/ipfs/*
-/help/main/*
-/help/page/*
+/prog/arm/
+/prog/dmg/
+/prog/elf/
+/prog/win/
+/prog/zip/
+/prog/pos/
+
